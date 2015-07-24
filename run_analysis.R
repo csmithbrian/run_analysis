@@ -28,7 +28,7 @@ for (i in 1:561){
         names(x_train)[i] <- as.character(features$V2[i])
 }
 
-#merge data
+#merge/clean/label data
 names(subject_train)[1] <- "Subject"
 names(subject_test)[1] <- "Subject"
 x_test$Group <- "Test"
@@ -41,12 +41,15 @@ names(y_merged)[1] <- "activity_id"
 names(activity_names)[1] <- "activity_id"
 names(activity_names)[2] <- "activity_label"
 xy_merged <- cbind(y_merged,x_merged)
+
+#extract just the means and std dev using an index of variables containing "mean" or "std"
 meanStdCols <- grep("mean|std",names(xy_merged),value = FALSE)
 idCols <- c(1,2,564)
 extracted_data_index <- c(idCols,meanStdCols) 
 extracted_data <- xy_merged[extracted_data_index]
 extracted_data <- merge(x = extracted_data,y = activity_names,by.x = "activity_id",by.y = "activity_id")
-#extracted_data <- extracted_data %>% group_by(Subject,activity_id)
+
+# Create the tidy dataset of means by melting data to long form and dcasting a mean on Subject and activity_label
 tidyset <- melt(extracted_data,id.vars = c("Subject","activity_label"),measure.vars = 4:82) %>% dcast(Subject+activity_label~variable,mean)
 
 
