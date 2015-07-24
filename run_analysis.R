@@ -11,7 +11,7 @@ fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%2
 print("Downloading file...")
 download.file(fileUrl,destfile="./data/getdata-projectfiles-UCI HAR Dataset.zip")
 print("Download finished. Unzipping...")
-unzip("./data/getdata-projectfiles-UCI HAR Dataset.zip",exdir = "./data/UCI HAR Dataset")
+unzip("./data/getdata-projectfiles-UCI HAR Dataset.zip",exdir = "./data")
 print("Unzip finished.")}
 x_train <- read.table("./data/UCI HAR Dataset/train/X_train.txt")
 y_train <- read.table("./data/UCI HAR Dataset/train/y_train.txt")
@@ -46,3 +46,4 @@ idCols <- c(1,2,564)
 extracted_data_index <- c(idCols,meanStdCols) 
 extracted_data <- xy_merged[extracted_data_index]
 extracted_data <- merge(x = extracted_data,y = activity_names,by.x = "activity_id",by.y = "activity_id")
+extracted_data <- extracted_data %>% group_by(Subject,activity_id)
