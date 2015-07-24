@@ -1,6 +1,6 @@
 #package management
 #opt <- options(warn = -1)
-list.of.packages <- c("dplyr")
+list.of.packages <- c("dplyr","reshape2")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 require(dplyr)
@@ -46,9 +46,9 @@ idCols <- c(1,2,564)
 extracted_data_index <- c(idCols,meanStdCols) 
 extracted_data <- xy_merged[extracted_data_index]
 extracted_data <- merge(x = extracted_data,y = activity_names,by.x = "activity_id",by.y = "activity_id")
-extracted_data <- extracted_data %>% group_by(Subject,activity_id)
+#extracted_data <- extracted_data %>% group_by(Subject,activity_id)
+tidyset <- melt(extracted_data,id.vars = c("Subject","activity_label"),measure.vars = 4:82) %>% dcast(Subject+activity_label~variable,mean)
 
-#renaming
 
 
 
