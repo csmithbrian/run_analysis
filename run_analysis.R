@@ -45,3 +45,4 @@ meanStdCols <- grep("mean|std",names(xy_merged),value = FALSE)
 idCols <- c(1,2,564)
 extracted_data_index <- c(idCols,meanStdCols) 
 extracted_data <- xy_merged[extracted_data_index]
+extracted_data <- merge(x = extracted_data,y = activity_names,by.x = "activity_id",by.y = "activity_id")
