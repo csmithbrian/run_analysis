@@ -1,7 +1,7 @@
-activity_id	-	The activity ID, ranging from 1 to 6.
-Subject	-	The subject ID, ranging from 1 to 30.
-Group	-	The group the subject was assigned to, either test (for test data) or train (for machine training).
-activity_label	-	The human readable label for activity during which data was captured. Values include walking, walking upstairs, walking downstairs, sitting, standing, and laying down.
+activity_id	-	The activity ID, ranging from 1 to 6.  
+Subject	-	The subject ID, ranging from 1 to 30.  
+Group	-	The group the subject was assigned to, either test (for test data) or train (for machine training).  
+activity_label	-	The human readable label for activity during which data was captured. Values include walking, walking upstairs, walking downstairs, sitting, standing, and laying down.  
 tBodyAccMeanX	-	Mean of body accelerometer signal in the X axis captured at 50 Hz and filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise,  with values ranging from -1 to 1
 tBodyAcc.mean...Y	-	Mean of body accelerometer signal in the Y axis captured at 50 Hz and filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise,  with values ranging from -1 to 1
 tBodyAcc.mean...Z	-	Mean of body accelerometer signal in the Z axis captured at 50 Hz and filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise,  with values ranging from -1 to 1
