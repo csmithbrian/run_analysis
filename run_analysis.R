@@ -49,9 +49,13 @@ extracted_data_index <- c(idCols,meanStdCols)
 extracted_data <- xy_merged[extracted_data_index]
 extracted_data <- merge(x = extracted_data,y = activity_names,by.x = "activity_id",by.y = "activity_id")
 
+#rename the variables
+legalnames <- make.names(names(extracted_data)[4:82],unique = TRUE)
+names(extracted_data)[4:82] <- legalnames
+
 # Create the tidy dataset of means by melting data to long form and dcasting a mean on Subject and activity_label
 tidyset <- melt(extracted_data,id.vars = c("Subject","activity_label"),measure.vars = 4:82) %>% dcast(Subject+activity_label~variable,mean)
-
+write.table(x = tidyset,file = "tidyset.txt",row.names = FALSE)
 
 
 
